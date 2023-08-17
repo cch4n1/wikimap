@@ -1,3 +1,5 @@
+-- ** TEST ** THIS IS A NEW CHANGE --
+
 -- Drop and recreate Users table (Example)
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS maps CASCADE;
