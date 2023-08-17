@@ -19,7 +19,8 @@ CREATE TABLE maps (
     title CHAR(50) NOT NULL,
     latitude float NOT NULL,
     longtitude float NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    active BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 -- Create points table
