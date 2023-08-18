@@ -8,17 +8,92 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <!-- css files -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <!-- leaflet css file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <!-- js files -->
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+    <!-- leaflet js file -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <!-- Include the navigation bar -->
+  <%- include('partials/navbar') %>
+
+    <main class="content" style="margin: 1em;">
+
+    <div class="table-box-home">
+      <h3>Browse User Created Maps</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Map Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Description</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+              <td> Gotham Crime </td>
+              <td> Batman </td>
+              <td> Areas with high rates of crime </td>
+              <td><form method="POST" action="#">
+                <button type="submit" class="btn btn-outline-danger">Show Map</button>
+              </form></td>
+            </tr>
+
+            <tr>
+              <td> Banks to Rob </td>
+              <td> Joker </td>
+              <td> Banks with the most money </td>
+              <td><form method="POST" action="#">
+                <button type="submit" class="btn btn-outline-danger">Show Map</button>
+              </form></td>
+            </tr>
+
+        </tbody>
+      </table>
+      <div class="card-footer text-muted">
+        <p class="card-text"  style="text-align: center;">
+          <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+        </p>
+      </div>
+    </div>
+
+     <!-- Map -->
+     <div class="map-box-home" id="map"></div>
+     <script>
+       // Initialize the map
+       var map = L.map('map').setView([51.505, -0.09], 13);
+     
+       // Add a tile layer (base map)
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '© OpenStreetMap'
+       }).addTo(map);
+     
+       // Add a marker to the map
+       L.marker([51.5, -0.09]).addTo(map)
+         .bindPopup('A marker here!')
+         .openPopup();
+     </script>
+     <!-- End of Map code-->
+
 </body>
 
 </html>
