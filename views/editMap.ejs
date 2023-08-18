@@ -32,15 +32,7 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
-
-      <div class="profile-box">
-        <img src="https://images.pexels.com/photos/11791435/pexels-photo-11791435.jpeg?auto=compress&cs=tinysrgb&w=100">
-           <div class="profile-elements">
-            <p class="username">Batman's Maps</p>
-            <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
-            </div>
-      </div>
-
+<h3>editing editing</h3>
        <!-- Map -->
           <div class="map-box-profile" id="map"></div>
           <script>
@@ -59,41 +51,19 @@
               .openPopup();
           </script>
         <!-- End of Map code-->
-
-
-      <div class="table-box-profile">
-        <h3>My Maps</h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Map Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-
-              <tr>
-                <td><a href="/maps/1"> Gotham Crime </a></td>
-                <td> Areas with high rates of crime </td>
-                <td><a href="/maps/edit/1"><button class="btn btn-outline-primary">Edit</button></a></td>
-                <td><form method="POST" action="#">
-                  <button type="submit" class="btn btn-outline-danger">Delete</button>
-                </form></td>
-              </tr>
-
-          </tbody>
-        </table>
-
-        <div class="card-footer text-muted">
-          <p class="card-text"  style="text-align: center;">
-            <a href="/create" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a>
-          </p>
+        <!-- Input Form -->
+        <div>
+          <h3>input form for editing</h3>
+          <form class="form-inline" action="/placeholder" method="placeholder">
+            <input
+              class="form-control"
+              type="text"
+              name="placeholder"
+              placeholder="placeholder"
+            >
+          </form>
+          <button type="submit" class="placeholder">Submit</button>
         </div>
-
-      </div>
-
 </body>
 
 </html>
