@@ -12,4 +12,11 @@ router.get('/', (req, res) => {
   res.render('create');
 });
 
+router.post('/', (req, res) => {
+  if (1===1) {
+    res.redirect('/maps/edit/1')
+  }
+});
+
+
 module.exports = router;
