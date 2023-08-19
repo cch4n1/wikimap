@@ -4,9 +4,9 @@
 <head>
   <title>My Profile</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -15,15 +15,13 @@
   <link rel="stylesheet" href="/styles/navbar.css">
   <!-- leaflet css file -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
   <!-- leaflet js file -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script>
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -32,39 +30,35 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
+      <h3>Create a map</h3>
+      <!-- Map -->
+      <div class="map-box-profile" id="map"></div>
+      <script>
+        // Initialize the map
+        var map = L.map('map').setView([51.505, -0.09], 13);
 
-       <!-- Map -->
-          <div class="map-box-profile" id="map"></div>
-          <script>
-            // Initialize the map
-            var map = L.map('map').setView([51.505, -0.09], 13);
+        // Add a tile layer (base map)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '© OpenStreetMap'
+        }).addTo(map);
 
-            // Add a tile layer (base map)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '© OpenStreetMap'
-            }).addTo(map);
+        // Add a marker to the map
+        L.marker([51.5, -0.09]).addTo(map)
+          .bindPopup('A marker here!')
+          .openPopup();
+      </script>
+      <!-- End of Map code-->
 
-            // Add a marker to the map
-            L.marker([51.5, -0.09]).addTo(map)
-              .bindPopup('A marker here!')
-              .openPopup();
-          </script>
-        <!-- End of Map code-->
-
-        <!-- Input Form -->
-        <div>
-          <h3>input form</h3>
-          <form class="form-inline" action="/placeholder" method="placeholder">
-            <input
-              class="form-control"
-              type="text"
-              name="placeholder"
-              placeholder="placeholder"
-            >
-          </form>
-          <button type="submit" class="placeholder">Submit</button>
-        </div>
+      <!-- Input Form -->
+      <div>
+        <form class="form-inline" action="/create" method="POST">
+          <label>Enter title:</label>
+          <input class="form-control" type="mapTitle" name="mapTitle" placeholder="my map">
+          <button type="submit" class="btn">Save</button>
+        </form>
+      </div>
+    </main>
 </body>
 
 </html>
