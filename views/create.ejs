@@ -22,6 +22,7 @@
   <!-- leaflet js file -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="/scripts/view-map.js"></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@
       <h3>Create a map</h3>
       <!-- Map -->
       <div class="map-box-profile" id="map"></div>
-      <script>
+      <!-- <script>
         // Initialize the map
         var map = L.map('map').setView([51.505, -0.09], 13);
 
@@ -45,9 +46,22 @@
 
         // Add a marker to the map
         L.marker([51.5, -0.09]).addTo(map)
-          .bindPopup('A marker here!')
+          .bindPopup('this is my centre')
           .openPopup();
-      </script>
+        let lat;
+        let lng;
+
+        map.addEventListener('mousemove', e => {
+          lat = map.getCenter(0);
+          lat = map.getCenter(1);
+          console.log('==========> did mouse move?')
+        })
+
+        document.getElementById('map').addEventListener('click', e => {
+          console.log(lat + ' --- ' + lng);
+          console.log('==========> did lat lng print?')
+        })
+      </script> -->
       <!-- End of Map code-->
 
       <!-- Input Form -->
@@ -55,7 +69,7 @@
         <form class="form-inline" action="/create" method="POST">
           <label>Enter title:</label>
           <input class="form-control" type="mapTitle" name="mapTitle" placeholder="my map">
-          <button type="submit" class="btn">Save</button>
+          <button type="submit" class="btn" id="create-map">Save</button>
         </form>
       </div>
     </main>
