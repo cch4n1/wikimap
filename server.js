@@ -28,18 +28,20 @@ app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
+// const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const profileRoutes = require('./routes/profile')
+const profileRoutes = require('./routes/profile');
 const favesRoutes = require('./routes/faves');
 const createRoutes = require('./routes/create');
 const mapRoutes = require('./routes/maps');
 
+const homepageMapsAPIRoutes = require('./routes/homepageMaps-api');
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
+// app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/profile', profileRoutes);
@@ -47,6 +49,9 @@ app.use('/faves', favesRoutes);
 app.use('/create', createRoutes);
 app.use('/maps', mapRoutes);
 // Note: mount other resources here, using the same pattern above
+
+app.use('/api/homepageMaps', homepageMapsAPIRoutes);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
