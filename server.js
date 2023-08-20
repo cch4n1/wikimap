@@ -35,6 +35,7 @@ const profileRoutes = require('./routes/profile');
 const favesRoutes = require('./routes/faves');
 const createRoutes = require('./routes/create');
 const mapRoutes = require('./routes/maps');
+const homeRoutes = require('./routes/home');
 
 const homepageMapsAPIRoutes = require('./routes/homepageMaps-api');
 
@@ -48,6 +49,7 @@ app.use('/profile', profileRoutes);
 app.use('/faves', favesRoutes);
 app.use('/create', createRoutes);
 app.use('/maps', mapRoutes);
+app.use('/home', homeRoutes);
 // Note: mount other resources here, using the same pattern above
 
 app.use('/api/homepageMaps', homepageMapsAPIRoutes);
@@ -58,7 +60,11 @@ app.use('/api/homepageMaps', homepageMapsAPIRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.redirect('/home');
+});
+
+app.get("/test", (req, res) => {
+  res.send("🤗");
 });
 
 app.listen(PORT, () => {

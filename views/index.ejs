@@ -36,11 +36,41 @@
 
     <main class="content" style="margin: 1em;">
 
+<<<<<<< HEAD
       <div class="table-box-home">
         <h3>Browse User Created Maps</h3>
         <table class="table">
           <thead>
+||||||| f968716
+    <div class="table-box-home">
+      <h3>Browse User Created Maps</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Map Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Description</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+
+=======
+    <div class="table-box-home">
+      <h3>Browse User Created Maps</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Map Name</th>
+            <th scope="col">Owner</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let map of maps) { %>
+>>>>>>> master
             <tr>
+<<<<<<< HEAD
               <th scope="col">Map Name</th>
               <th scope="col">Owner</th>
               <th scope="col">Description</th>
@@ -56,8 +86,47 @@
             <!-- Empty for now -->
           </p>
         </div>
+||||||| f968716
+              <td> Gotham Crime </td>
+              <td> Batman </td>
+              <td> Areas with high rates of crime </td>
+              <td><form method="POST" action="#">
+                <button type="submit" class="btn btn-outline-danger">Show Map</button>
+              </form></td>
+            </tr>
+
+            <tr>
+              <td> Banks to Rob </td>
+              <td> Joker </td>
+              <td> Banks with the most money </td>
+              <td><form method="POST" action="#">
+                <button type="submit" class="btn btn-outline-danger">Show Map</button>
+              </form></td>
+            </tr>
+
+        </tbody>
+      </table>
+      <div class="card-footer text-muted">
+        <p class="card-text"  style="text-align: center;">
+          <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+        </p>
+=======
+              <td><%= map['map_name'] %></td>
+              <td><%= map['owner'] %></td>
+              <td><a href='#'>Link</a></td>
+            </tr>
+          <% } %>
+
+        </tbody>
+      </table>
+      <div class="card-footer text-muted">
+        <p class="card-text"  style="text-align: center;">
+          <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+        </p>
+>>>>>>> master
       </div>
 
+<<<<<<< HEAD
       <!-- Map -->
       <div class="map-box-home" id="map"></div>
       <script>
@@ -77,5 +146,35 @@
       </script>
       <!-- End of Map code-->
 
+||||||| f968716
+     <!-- Map -->
+     <div class="map-box-home" id="map"></div>
+     <script>
+       // Initialize the map
+       var map = L.map('map').setView([51.505, -0.09], 13);
+     
+       // Add a tile layer (base map)
+       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 19,
+         attribution: '© OpenStreetMap'
+       }).addTo(map);
+     
+       // Add a marker to the map
+       L.marker([51.5, -0.09]).addTo(map)
+         .bindPopup('A marker here!')
+         .openPopup();
+     </script>
+     <!-- End of Map code-->
+
+=======
+>>>>>>> master
 </body>
+<<<<<<< HEAD
 </html>
+||||||| f968716
+
+</html>
+=======
+
+</html>
+>>>>>>> master
