@@ -42,29 +42,17 @@
           <tr>
             <th scope="col">Map Name</th>
             <th scope="col">Owner</th>
-            <th scope="col">Description</th>
             <th scope="col">View</th>
           </tr>
         </thead>
         <tbody>
-
+          <% for (let map of maps) { %>
             <tr>
-              <td> Gotham Crime </td>
-              <td> Batman </td>
-              <td> Areas with high rates of crime </td>
-              <td><form method="POST" action="#">
-                <button type="submit" class="btn btn-outline-danger">Show Map</button>
-              </form></td>
+              <td><%= map['map_name'] %></td>
+              <td><%= map['owner'] %></td>
+              <td><a href='#'>Link</a></td>
             </tr>
-
-            <tr>
-              <td> Banks to Rob </td>
-              <td> Joker </td>
-              <td> Banks with the most money </td>
-              <td><form method="POST" action="#">
-                <button type="submit" class="btn btn-outline-danger">Show Map</button>
-              </form></td>
-            </tr>
+          <% } %>
 
         </tbody>
       </table>
@@ -74,25 +62,6 @@
         </p>
       </div>
     </div>
-
-     <!-- Map -->
-     <div class="map-box-home" id="map"></div>
-     <script>
-       // Initialize the map
-       var map = L.map('map').setView([51.505, -0.09], 13);
-     
-       // Add a tile layer (base map)
-       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-         maxZoom: 19,
-         attribution: '© OpenStreetMap'
-       }).addTo(map);
-     
-       // Add a marker to the map
-       L.marker([51.5, -0.09]).addTo(map)
-         .bindPopup('A marker here!')
-         .openPopup();
-     </script>
-     <!-- End of Map code-->
 
 </body>
 
