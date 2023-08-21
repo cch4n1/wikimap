@@ -3,7 +3,7 @@ $(() => {
 
 
   // this is a button that appears when a marker is clicked
-  const buttonRemove ='<button type="button" class="remove">delete marker 💔</button>';
+  const buttonRemove = '<button type="button" class="remove">delete marker 💔</button>';
 
 
   // use the code below if want to use bindPopup for an input box
@@ -25,39 +25,63 @@ $(() => {
   map.on('click', addMarker);
 
   function addMarker(e) {
-    let marker = new L.marker(e.latlng, {draggable: true}).addTo(map).bindPopup(buttonRemove);
+    let marker = new L.marker(e.latlng, { draggable: true }).addTo(map).bindPopup(buttonRemove);
+
+    //prepare data for POST request
+    const data = {
+      lat: e.latlng.lat,
+      lng: e.latlng.lng
+    };
 
     //event remove marker
     marker.on('popupopen', removeMarker);
 
     //event dragged marker
     marker.on('dragend', dragedMarker);
+
+    // Send an AJAX POST request using jQuery
+    $.ajax({
+      type: "POST",
+      url: "/maps/edit/1",
+      data: data,
+      // contentType: "application/json",
+      dataType: "json", // Change this dataType as needed
+      success: function(response) {
+        // Handle the successful response here
+        console.log("AJAX request successful:", response);
+      },
+      error: function(error) {
+        // Handle any errors that occur during the request
+        console.error("AJAX request error:", error);
+      }
+    });
+
   }
 
   // remove marker
   function removeMarker() {
     const marker = this;
     const btn = document.querySelector('.remove');
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function() {
       map.removeLayer(marker);
-    })
+    });
   }
 
 
   // drag marker
   function dragedMarker() {
     const markerPlace = document.querySelector('.marker-position');
-    markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${
-      this.getLatLng().lng
-    }`;
-
+    markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${this.getLatLng().lng
+      }`;
   }
-  map.on('click', function(e) {
-    let lat = e.latlng.lat;
-    let lon = e.latlng.lng;
 
-    //Add a marker to show where you clicked.
-    let theMarker = new L.marker([lat, lon], {draggable: true}).addTo(map).bindPopup(buttonRemove);
-  });
-})
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // map.on('click', function(e) {
+  //   let lat = e.latlng.lat;
+  //   let lon = e.latlng.lng;
 
+  //   //Add a marker to show where you clicked.
+  //   let theMarker = new L.marker([lat, lon], {draggable: true}).addTo(map).bindPopup(buttonRemove);
+  // });
+});
