@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bodyParser = require('body-parser');
 
 //view map
 router.get('/1', (req, res) => {
@@ -15,6 +16,12 @@ router.get('/1', (req, res) => {
 
 //edit map
 router.get('/edit/1', (req, res) => {
+  res.render('editMap');
+})
+
+//edit map
+router.post('/edit/1', (req, res) => {
+  console.log(req.body);
   res.render('editMap');
 })
 
