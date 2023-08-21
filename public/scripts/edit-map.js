@@ -22,6 +22,36 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
+  map.on('click', addMarker);
+
+  function addMarker(e) {
+    let marker = new L.marker(e.latlng, {draggable: true}).addTo(map).bindPopup(buttonRemove);
+
+    //event remove marker
+    marker.on('popupopen', removeMarker);
+
+    //event dragged marker
+    marker.on('dragend', dragedMarker);
+  }
+
+  // remove marker
+  function removeMarker() {
+    const marker = this;
+    const btn = document.querySelector('.remove');
+    btn.addEventListener('click', function () {
+      map.removeLayer(marker);
+    })
+  }
+
+
+  // drag marker
+  function dragedMarker() {
+    const markerPlace = document.querySelector('.marker-position');
+    markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${
+      this.getLatLng().lng
+    }`;
+
+  }
   map.on('click', function(e) {
     let lat = e.latlng.lat;
     let lon = e.latlng.lng;
