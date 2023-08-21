@@ -13,19 +13,15 @@ $(() => {
   let lng;
 
   console.log('ran the view-map script');
-  let centre = map.getCenter();
-  console.log(`===============> ${Object.keys(centre)}`);
-  // console.log(`===============> ${centre._southWest}`);
-  // console.log(`===============> ${centre._northEast}`);
 
+  map.on('dragend', function(e) {
+    console.log('==========> did drag end? YES')
+    let newMapCentre = map.getCenter();
+    lat = newMapCentre.lat;
+    lng= newMapCentre.lng;
 
-  // map.on('mousemove', function(e) {
-  //   // lat = centre.lat;
-  //   // lng = centre.lng;
-  //   console.log('==========> did mouse move?')
-  //   console.log([e.latlng.lat, e.latlng.lng]);
-  //   // console.log(map.getCenter());
-  // })
+    console.log(`lat is: ${lat} '------' long is: ${lng}`);
+  })
 
 
   map.on('click', function(e) {
