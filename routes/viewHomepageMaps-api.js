@@ -5,6 +5,7 @@ const mapQueries = require("../db/queries/getHomepageMaps");
 router.get("/", (req, res) => {
   mapQueries
     .getHomepageMaps()
+      
     .then((maps) => {
       res.json({ maps });
     })

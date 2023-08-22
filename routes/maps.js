@@ -7,10 +7,21 @@
 
 const express = require('express');
 const router  = express.Router();
+const displayPointsQuery = require('../db/queries/get-points-for-map-view.js');
 
 //view map
 router.get('/1', (req, res) => {
-  res.render('viewMap');
+  
+  //change mapId to match map you are trying to
+  const mapId = 3;
+
+  displayPointsQuery.getPoints(mapId)
+    .then((points) => {
+      const templateVars = {
+        points
+      }
+      res.render('viewMap', templateVars);
+    })
 });
 
 //edit map

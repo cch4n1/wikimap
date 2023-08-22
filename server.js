@@ -40,6 +40,9 @@ const homeRoutes = require("./routes/home");
 // Resource to view all maps in the homepage
 const homepageMapsAPIRoute = require("./routes/viewHomepageMaps-api");
 
+// Resource to view all points in view map page
+const mapPageAPIRoute = require("./routes/viewMapPage-api")
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -55,6 +58,9 @@ app.use("/home", homeRoutes);
 
 // API end-point for data requests via Ajax
 app.use("/api/viewHomepageMaps", homepageMapsAPIRoute);
+
+// API end-point for data requests via Ajax (map page)
+app.use("/api/viewMapPage", mapPageAPIRoute)
 
 // Home page
 // Warning: avoid creating more routes in this file!

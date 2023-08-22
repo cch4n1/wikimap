@@ -3,16 +3,15 @@
 $(document).ready(function() {
   $.ajax({
     method: "GET",
-    url: "/api/viewHomepageMaps",
+    url: "/api/viewMapPage",
   }).done(function(response) {
-    console.log(response)
-    const maps = response.maps;
-    console.log(maps)
-    for (const map of maps) {
+    const points = response.points;
+
+    for (const point of points) {
       const tableRow = `
         <tr>
-          <td>${map.title}</td>
-          <td>${map.username}</td>
+          <td>${point.title}</td>
+          <td>${point.description}</td>
           <td>
             <form method="POST" action="#">
               <button type="submit" class="btn btn-outline-danger">Show Map</button>
@@ -21,7 +20,7 @@ $(document).ready(function() {
         </tr>
       `;
 
-      $("#mapData").append(tableRow);
+      $("#pointsData").append(tableRow);
     }
   });
 });

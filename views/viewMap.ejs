@@ -20,6 +20,7 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/viewMapPage.js"></script>
   <!-- leaflet js file -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -52,6 +53,29 @@
           </script>
         <!-- End of Map code-->
 
+        <main class="content" style="margin: 1em;">
+          <div class="table-box-home">
+              <h3>Map Name</h3> <!--change Map Name to variable-->
+              <h3>Owner Name</h3> <!--change owner name to variable-->
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">Point Name</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Co-ordinates</th>
+                      </tr>
+                  </thead>
+                  <tbody id="pointsData">
+                      <!-- This is where the AJAX data will be appended -->
+                  </tbody>
+              </table>
+              <div class="card-footer text-muted">
+                  <p class="card-text" style="text-align: center;">
+                      <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+                  </p>
+              </div>
+          </div>
+    
 </body>
 
 </html>
