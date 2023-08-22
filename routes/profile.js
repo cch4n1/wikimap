@@ -10,6 +10,14 @@ const router  = express.Router();
 
 router.get('/', (req, res) => {
   res.render('profile');
-}); 
+});
+
+router.post('/', (req,res) => {
+  let markerTitle = req.body.markerTitle;
+  let markerDescription = req.body.markerDescription;
+  let markerURL = req.body.markerURL;
+  console.log(markerTitle, markerDescription, markerURL);
+  res.render('profile');
+})
 
 module.exports = router;

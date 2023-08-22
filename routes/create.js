@@ -21,10 +21,14 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // console.log(req.body.mapTitle);
+  console.log(req.body);
+  console.log(req.query);
+  console.log(req.params);
+  console.log('testing reqs');
   const mapParams = req.body.mapTitle;
   createMapQuery.createMap(mapParams)
     .then(map => {
-      // console.log(map);
+      console.log(map);
       console.log('---------->>> this is a test of the route');
       res.redirect('/profile');
     })
@@ -33,7 +37,6 @@ router.post('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
-  // res.redirect('/profile');
 });
 
 module.exports = router;
