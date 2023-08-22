@@ -25,7 +25,15 @@ router.post('/edit/1', (req, res) => {
   let lat = req.body.lat;
   let long = req.body.lng;
 
-  const markerParams = [lat, long];
+  console.log(req.body);
+
+  const markerParams = {
+    title: req.body.markerTitle,
+    description: req.body.markerDescription,
+    URL: req.body.markerURL,
+    lat: req.body.markerLat,
+    long: req.body.markerLong
+  }
   createMarkerQuery.createMarker(markerParams)
     .then(marker => {
       console.log(marker);

@@ -4,9 +4,9 @@ const createMarker = (params) => {
   return db.query(`
   INSERT INTO points (map_id, title, description, latitude, longitude, image)
   VALUES
-  (3, 'Historic Landmark', 'Significant historical site.', $1, $2, 'landmark.jpg')
+  (3, $1, $2, $3, $4, $5)
   RETURNING *
-  `, [params[0], params[1]])
+  `, [params.title, params.description, params.lat, params.long, params.URL])
     .then(data => {
       return data.rows;
     });
