@@ -39,6 +39,11 @@ $(() => {
     //event dragged marker
     marker.on('dragend', dragedMarker);
 
+    const markerPlace = document.querySelector('.marker-position');
+    markerPlace.textContent = `hahaha change position: ${marker.getLatLng().lat}, ${marker.getLatLng().lng
+      }`;
+
+
     // Send an AJAX POST request using jQuery
     $.ajax({
       type: "POST",

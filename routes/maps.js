@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const bodyParser = require('body-parser');
+const createMarkerQuery = require('../db/queries/createMarker');
 
 //view map
 router.get('/1', (req, res) => {
@@ -21,8 +22,20 @@ router.get('/edit/1', (req, res) => {
 
 //edit map
 router.post('/edit/1', (req, res) => {
-  console.log(req.body);
-  res.render('editMap');
+  let lat = req.body.lat;
+  let long = req.body.lng;
+
+  const markerParams = [lat, long];
+  createMarkerQuery.createMarker(markerParams)
+    .then(marker => {
+      console.log(marker);
+      res.redirect('/profile');
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 })
 
 //delete map
