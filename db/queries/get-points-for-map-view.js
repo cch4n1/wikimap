@@ -10,7 +10,7 @@ const db = require('../connection');
  */
 const getPoints = (mapId) => {
   return db.query(`
-  SELECT title as Point_of_Interest, description 
+  SELECT * 
   FROM points
   WHERE map_id = ${mapId};
   `)

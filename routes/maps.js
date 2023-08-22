@@ -16,10 +16,11 @@ router.get('/1', (req, res) => {
   const mapId = 3;
 
   displayPointsQuery.getPoints(mapId)
-    .then((points) => {
+    .then((points = []) => {
       const templateVars = {
         points
       }
+      // console.log(points)
       res.render('viewMap', templateVars);
     })
 });
