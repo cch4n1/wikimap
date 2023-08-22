@@ -1,3 +1,6 @@
+// should be deleted after merge - Bo
+// this functionality is updated by viewHomepageMaps.js
+
 const db = require('../connection');
 
 const displayAllMaps = () => {
