@@ -34,25 +34,37 @@
     <main style="margin: 1em; margin-top: 23vh;">
 <h3>viewing viewing</h3>
        <!-- Map -->
+          <!-- Map code -->
           <div class="map-box-profile" id="map"></div>
           <script>
             // Initialize the map
             var map = L.map('map').setView([51.505, -0.09], 13);
-
+            
             // Add a tile layer (base map)
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
               maxZoom: 19,
               attribution: '© OpenStreetMap'
             }).addTo(map);
+            
+            // Your array of point data
+            // const pointDataArray = JSON.stringify(points);
+            const points = <%- JSON.stringify(points) %>;
+            console.log(points[0])
+            
+            for (let point of points) { 
+              L.marker([point.latitude, point.longitude]).addTo(map)
+                .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
+                // .openPopup();
+            }
+            // // Add a marker to the map
+            // L.marker([51.5, -0.09]).addTo(map)
+            // .bindPopup('A marker here!')
+            // .openPopup();
 
-            // Add a marker to the map
-            L.marker([51.5, -0.09]).addTo(map)
-              .bindPopup('A marker here!')
-              .openPopup();
-          </script>
+            </script>
         <!-- End of Map code-->
 
-
+  
         <main class="content" style="margin: 1em;">
 
           <div class="table-box-home">
@@ -62,15 +74,15 @@
                 <tr>
                   <th scope="col">Point Name</th>
                   <th scope="col">Description</th>
-                  <th scope="col">View</th>
+                  <th scope="col">Image</th>
                 </tr>
               </thead>
               <tbody>
                 <% for (let point of points) { %>
                   <tr>
-                    <td><%= point['point_of_interest'] %></td>
+                    <td><%= point['title'] %></td>
                     <td><%= point['description'] %></td>
-                    <td><a href='#'>Link</a></td>
+                    <td><a href="<%= point.image %>">Link</a></td>
                   </tr>
                 <% } %>
       
