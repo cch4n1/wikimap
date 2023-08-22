@@ -22,6 +22,10 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
+  const latInput = document.querySelector('#markerLat');
+
+  const longInput = document.querySelector('#markerLong');
+
   map.on('click', addMarker);
 
   function addMarker(e) {
@@ -39,28 +43,37 @@ $(() => {
     //event dragged marker
     marker.on('dragend', dragedMarker);
 
+    latInput.value = e.latlng.lat;
+    longInput.value = e.latlng.lng;
+
     const markerPlace = document.querySelector('.marker-position');
     markerPlace.textContent = `hahaha change position: ${marker.getLatLng().lat}, ${marker.getLatLng().lng
       }`;
 
 
     // Send an AJAX POST request using jQuery
-    $.ajax({
-      type: "POST",
-      url: "/maps/edit/1",
-      data: data,
-      // contentType: "application/json",
-      dataType: "json", // Change this dataType as needed
-      success: function(response) {
-        // Handle the successful response here
-        console.log("AJAX request successful:", response);
-      },
-      error: function(error) {
-        // Handle any errors that occur during the request
-        console.error("AJAX request error:", error);
-      }
-    });
 
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+      // code below is current not used
+
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/maps/edit/1",
+    //   data: data,
+    //   // contentType: "application/json",
+    //   dataType: "json", // Change this dataType as needed
+    //   success: function(response) {
+    //     // Handle the successful response here
+    //     console.log("AJAX request successful:", response);
+    //   },
+    //   error: function(error) {
+    //     // Handle any errors that occur during the request
+    //     console.error("AJAX request error:", error);
+    //   }
+    // });
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   }
 
   // remove marker
