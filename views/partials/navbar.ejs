@@ -2,8 +2,8 @@
   <ul class="nav-list">
     <li><a href="/">Home</a></li>
     <% if (user) { %> <!-- Checks if user object exists, indicating a logged-in user -->
-      <li><a href="/profile">My Maps</a></li>
-      <li><a href="/faves">Favourites</a></li>
+      <li><a href="/profile/<%= user.id %>">My Maps</a></li>
+      <li><a href="/faves/<%= user.id %>">Favourites</a></li>
       <li><a href="/create">Create</a></li>
     <% } %>
   </ul>
