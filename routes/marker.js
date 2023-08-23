@@ -6,6 +6,7 @@ const router  = express.Router();
 //const createMarker = require('../db/queries/createMarker');
 const bodyParser = require('body-parser');
 const createMarkerQuery = require('../db/queries/createMarker');
+const deleteMarkerQuery = require('../db/queries/deleteMarker');
 
 router.get('/', (req, res) => {
   // console.log(req.query);
@@ -40,6 +41,16 @@ router.post('/', (req, res) => {
         .status(500)
         .json({ error: err.message });
     });
+});
+
+router.post("/:point/delete", (req, res) => {
+  let markerParams = req.params.point;
+
+  deleteMarkerQuery.deleteMarker(markerParams)
+  .then(marker => {
+    console.log('deleted');
+    res.redirect('/maps/edit/1');
+  });
 })
 
 module.exports = router;
