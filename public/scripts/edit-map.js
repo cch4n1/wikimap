@@ -23,7 +23,7 @@ $(() => {
   }).addTo(map);
 
   for (let point of points) {
-    L.marker([point.latitude, point.longitude]).addTo(map)
+    L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
       .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
   }
 
