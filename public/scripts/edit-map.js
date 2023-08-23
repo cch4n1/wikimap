@@ -14,13 +14,18 @@ $(() => {
 
 
   //create the map
-  let map = L.map('map').setView([51.505, -0.09], 13);
+  let map = L.map('map').setView([51.505, -0.09], 12);
 
   // Add a tile layer (base map)
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
   }).addTo(map);
+
+  for (let point of points) {
+    L.marker([point.latitude, point.longitude]).addTo(map)
+      .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
+  }
 
   const latInput = document.querySelector('#markerLat');
 
@@ -31,11 +36,11 @@ $(() => {
   function addMarker(e) {
     let marker = new L.marker(e.latlng, { draggable: true }).addTo(map).bindPopup(buttonRemove);
 
-    //prepare data for POST request
-    const data = {
-      lat: e.latlng.lat,
-      lng: e.latlng.lng
-    };
+    // //prepare data for POST request
+    // const data = {
+    //   lat: e.latlng.lat,
+    //   lng: e.latlng.lng
+    // };
 
     //event remove marker
     marker.on('popupopen', removeMarker);
@@ -47,9 +52,8 @@ $(() => {
     longInput.value = e.latlng.lng;
 
     const markerPlace = document.querySelector('.marker-position');
-    markerPlace.textContent = `hahaha change position: ${marker.getLatLng().lat}, ${marker.getLatLng().lng
+    markerPlace.textContent = `Yes sir create position: ${marker.getLatLng().lat}, ${marker.getLatLng().lng
       }`;
-
 
     // Send an AJAX POST request using jQuery
 
@@ -89,8 +93,10 @@ $(() => {
   // drag marker
   function dragedMarker() {
     const markerPlace = document.querySelector('.marker-position');
-    markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${this.getLatLng().lng
-      }`;
+    markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${this.getLatLng().lng}`;
+
+    latInput.value = e.latlng.lat;
+    longInput.value = e.latlng.lng;
   }
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
