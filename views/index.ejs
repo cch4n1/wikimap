@@ -22,6 +22,9 @@
   <!-- js files -->
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/app.js"></script>
+    <script defer src="/scripts/viewHomepageMaps.js"></script>
+
+
     <!-- leaflet js file -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -33,35 +36,27 @@
   <!-- Include the navigation bar -->
   <%- include('partials/navbar') %>
 
-    <main class="content" style="margin: 1em;">
-
-    <div class="table-box-home">
-      <h3>Browse User Created Maps</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Map Name</th>
-            <th scope="col">Owner</th>
-            <th scope="col">View</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for (let map of maps) { %>
-            <tr>
-              <td><%= map['map_name'] %></td>
-              <td><%= map['owner'] %></td>
-              <td><a href='#'>Link</a></td>
-            </tr>
-          <% } %>
-
-        </tbody>
-      </table>
-      <div class="card-footer text-muted">
-        <p class="card-text"  style="text-align: center;">
-          <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
-        </p>
+  <main class="content" style="margin: 1em;">
+      <div class="table-box-home">
+          <h3>Browse User Created Maps</h3>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">Map Name</th>
+                      <th scope="col">Owner</th>
+                      <th scope="col">View</th>
+                  </tr>
+              </thead>
+              <tbody id="mapData">
+                  <!-- This is where the AJAX data will be appended -->
+              </tbody>
+          </table>
+          <div class="card-footer text-muted">
+              <p class="card-text" style="text-align: center;">
+                  <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+              </p>
+          </div>
       </div>
-    </div>
 
 </body>
 

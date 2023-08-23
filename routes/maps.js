@@ -9,6 +9,8 @@ const express = require('express');
 const router  = express.Router();
 const displayPointsQuery = require('../db/queries/get-points-for-map-view.js');
 
+const bodyParser = require('body-parser');
+const createMarkerQuery = require('../db/queries/createMarker');
 
 //view map
 router.get('/1', (req, res) => {
@@ -28,6 +30,32 @@ router.get('/1', (req, res) => {
 //edit map
 router.get('/edit/1', (req, res) => {
   res.render('editMap');
+})
+
+//edit map
+router.post('/edit/1', (req, res) => {
+  let lat = req.body.lat;
+  let long = req.body.lng;
+
+  console.log(req.body);
+
+  const markerParams = {
+    title: req.body.markerTitle,
+    description: req.body.markerDescription,
+    URL: req.body.markerURL,
+    lat: req.body.markerLat,
+    long: req.body.markerLong
+  }
+  createMarkerQuery.createMarker(markerParams)
+    .then(marker => {
+      console.log(marker);
+      res.redirect('/profile');
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 })
 
 //delete map
