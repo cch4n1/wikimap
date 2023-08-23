@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>My Profile</title>
+  <title><%= map[0].title %> - View Map</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
-      <h3>viewing viewing</h3>
+      <h3><%= map[0].title %></h3>
       <!-- Map -->
       <!-- Map code -->
       <div class="map-box-profile" id="map"></div>
@@ -48,7 +48,7 @@
       <main class="content" style="margin: 1em;">
 
         <div class="table-box-home">
-          <h3>Map Name</h3>
+          <h3>List of Map Points for <%= map[0].title %></h3>
           <table class="table">
             <thead>
               <tr>

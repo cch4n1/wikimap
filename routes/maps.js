@@ -8,23 +8,30 @@
 const express = require('express');
 const router  = express.Router();
 const displayPointsQuery = require('../db/queries/get-points-for-map-view.js');
-
 const bodyParser = require('body-parser');
 const createMarkerQuery = require('../db/queries/createMarker');
 
 //view map
 router.get('/1', (req, res) => {
-  
-  const mapId = 3;
+  const mapId = 3; //change this later
 
-  displayPointsQuery.getPoints(mapId)
-    .then((points = []) => {
+  Promise.all([
+    displayPointsQuery.getPoints(mapId),
+    displayPointsQuery.getMap(mapId)
+  ])
+    .then(([points = [], map = []]) => {
       const templateVars = {
-        points
+        points,
+        map
       }
-      // console.log(points)
+      console.log(map)
       res.render('viewMap', templateVars);
     })
+    .catch(err => {
+      // Handle any errors here
+      console.error(err);
+      res.status(500).send('Error fetching data');
+    });
 });
 
 //edit map
