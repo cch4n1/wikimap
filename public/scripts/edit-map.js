@@ -95,8 +95,8 @@ $(() => {
     const markerPlace = document.querySelector('.marker-position');
     markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${this.getLatLng().lng}`;
 
-    latInput.value = e.latlng.lat;
-    longInput.value = e.latlng.lng;
+    latInput.value = this.getLatLng().lat;
+    longInput.value = this.getLatLng().lng;
   }
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
