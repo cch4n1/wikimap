@@ -70,6 +70,7 @@
               <th scope="col">Point Name</th>
               <th scope="col">Description</th>
               <th scope="col">Image</th>
+              <th scope="col">Edit</th>
               <th scopt="col">Delete</th>
             </tr>
           </thead>
@@ -83,6 +84,7 @@
                   <%= point['description'] %>
                 </td>
                 <td><a href="<%= point.image %>">Link</a></td>
+                <td><button class="open-button" onclick="openForm()">Edit</button></td>
                 <td><form method="POST" action="/marker/<%= point.id%>/delete"><button type="submit">Delete</button></form></td>
               </tr>
               <% } %>
@@ -91,6 +93,41 @@
         </table>
         <div class="card-footer text-muted">
 
+          <!-- Popup edit form -->
+          <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+              <h1>Login</h1>
+
+              <label for="email"><b>Email</b></label>
+              <input type="text" placeholder="Enter Email" name="email" required>
+
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" required>
+
+              <button type="submit" class="btn">Login</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div>
+
+
+<!--
+to work on after
+          <div>
+            <form class="form-inline" action="/marker" method="POST">
+              <label>Enter title:</label>
+              <input class="form-control" type="markerTitle" name="markerTitle" placeholder="title">
+              <label>Enter description</label>
+              <input class="form-control" type="markerDescription" name="markerDescription" placeholder="description">
+              <label>Enter URL</label>
+              <input class="form-control" type="markerURL" name="markerURL" placeholder="URL.jpg">
+              <label>LAT</label>
+              <input class="form-control" type="markerLat" name="markerLat" id="markerLat">
+              <label>LONG</label>
+              <input class="form-control" type="markerLong" name="markerLong" id="markerLong">
+              <button type="submit" class="btn" id="create-marker">Save</button>
+              <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+          </div> -->
 </body>
 
 </html>

@@ -22,10 +22,23 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-  for (let point of points) {
-    L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
+
+  // populateMarker function
+  function populateMarker(pointsObject) {
+
+    for (let point of points) {
+      console.log(point);
+      marker = L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
       .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
+    }
   }
+  populateMarker(points);
+
+  // straight loop
+  // for (let point of points) {
+  //   L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
+  //     .bindPopup(`<strong>${point.title}</strong><br>${point.description}`);
+  // }
 
   const latInput = document.querySelector('#markerLat');
 
