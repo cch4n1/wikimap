@@ -21,6 +21,8 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/viewProfileUsername.js"></script>
+  <script src="/scripts/favouriteHandler.js" defer></script>
+
   <script src="/scripts/leaflet-src.js" defer></script>
 </head>
 
@@ -30,13 +32,16 @@
 
     <main style="margin: 1em; margin-top: 23vh; padding: 20px; background-color: #f4f4f4; border-radius: 15px;">
 
+      <!-- Display the username dynamically -->
       <div class="profile-box" style="display: flex; align-items: center;">
-        <!-- Replaced image with user icon -->
         <i class="fas fa-user fa-5x" style="margin-right: 20px;"></i>
         <div>
-          <h2 class="username" id="username"></h2>
+          <h2 class="username" id="username">
+            All <%= user.username %>'s Maps
+          </h2>
         </div>
       </div>
+      
 
       <div class="table-box-profile"
         style="margin-top: 20px; background-color: #fff; padding: 20px; border-radius: 10px;">
@@ -50,25 +55,42 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><a href="/maps/1"> Gotham Crime </a></td>
-              <td> Areas with high rates of crime </td>
-              <td><a href="/maps/edit/1"><button class="btn btn-outline-primary">Edit</button></a></td>
-              <td>
-                <form method="POST" action="#">
-                  <button type="submit" class="btn btn-outline-danger">Delete</button>
-                </form>
-              </td>
-            </tr>
+            <% userMaps.forEach(map=> { %>
+              <tr>
+                <td><a href="/maps/<%= map.id %>">
+                    <%= map.title %>
+                  </a></td>
+                <td>
+                  <%= map.description %>
+                </td>
+                <td><a href="/maps/edit/<%= map.id %>"><button class="btn btn-outline-primary">Edit</button></a></td>
+
+                <!-- Delete Button -->
+                <td>
+                  <form method="POST" action="/maps/delete/<%= map.id %>">
+                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                  </form>
+                </td>
+
+                <!-- Add to Favourites Heart Icon -->
+                <td>
+                  <i class="fas fa-heart favorite-icon" data-map-id="<%= map.id %>"
+                    style="cursor: pointer; color: <%= map.favourite ? 'red' : 'black' %>;"></i>
+                </td>
+
+
+              </tr>
+              <% }) %>
           </tbody>
+
         </table>
 
-        <div class="card-footer text-muted" style="margin-top: 20px;">
+        <!-- <div class="card-footer text-muted" style="margin-top: 20px;">
           <p class="card-text" style="text-align: center;">
             <a href="/create" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new
                 Map</button></a>
           </p>
-        </div>
+        </div> -->
       </div>
 
 
