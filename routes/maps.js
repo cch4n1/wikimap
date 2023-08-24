@@ -19,12 +19,12 @@ router.get('/1', (req, res) => {
     displayPointsQuery.getPoints(mapId),
     displayPointsQuery.getMap(mapId)
   ])
-    .then(([points = [], map = []]) => {
+    .then(([points = [], viewMap = []]) => {
       const templateVars = {
         points,
-        map
+        viewMap
       }
-      console.log(map)
+      // console.log(vmap)
       res.render('viewMap', templateVars);
     })
     .catch(err => {
