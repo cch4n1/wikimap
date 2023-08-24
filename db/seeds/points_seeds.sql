@@ -20,3 +20,9 @@ INSERT INTO points (map_id, title, description, latitude, longitude, image) VALU
 INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (3, 'British Museum', 'Visit the local museum.', 51.5194, -0.1270, 'https://images.pexels.com/photos/14845978/pexels-photo-14845978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
 
 INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (3, 'Tate Modern Art Gallery', 'Explore contemporary art.', 51.5076, -0.0994, 'https://images.pexels.com/photos/11314921/pexels-photo-11314921.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+
+INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (3, 'Buckingham Palace', 'Residence of the Royal Monarch of UK.', 51.501476, -0.140634, 'https://images.pexels.com/photos/12566687/pexels-photo-12566687.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+
+INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (3, 'Picadilly Circus', 'Busy meeting place and a tourist attraction.', 51.510067, -0.133869, 'https://images.pexels.com/photos/34639/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+
+INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (3, 'Palace of Westminister', 'Meeting place for the House of Commons.', 51.4929, -0.1215, 'https://images.pexels.com/photos/13433495/pexels-photo-13433495.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
