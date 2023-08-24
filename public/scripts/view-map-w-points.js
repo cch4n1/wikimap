@@ -20,7 +20,7 @@ $(() => {
 
   for (let point of points) { 
     L.marker([point.latitude, point.longitude]).addTo(map)
-      .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
+      .bindPopup(`<strong>${point.title}</strong><br>${point.description}<br><br><center><img src="${point.image}" width="120" height="120"></center>`)
   }
 
   // map.on('mousemove', function(e) {
