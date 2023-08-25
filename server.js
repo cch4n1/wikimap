@@ -36,6 +36,7 @@ const favesRoutes = require("./routes/faves");
 const createRoutes = require("./routes/create");
 const mapRoutes = require("./routes/maps");
 const homeRoutes = require("./routes/home");
+const markerRoutes = require("./routes/marker");
 
 // Resource to view all maps in the homepage
 const homepageMapsAPIRoute = require("./routes/viewHomepageMaps-api");
@@ -52,6 +53,7 @@ app.use("/faves", favesRoutes);
 app.use("/create", createRoutes);
 app.use("/maps", mapRoutes);
 app.use("/home", homeRoutes);
+app.use("/marker", markerRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // API end-point for data requests via Ajax

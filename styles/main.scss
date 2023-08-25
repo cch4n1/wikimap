@@ -88,6 +88,12 @@ body {
   top: 0px; /* Adjust to match the height of the navbar */
 }
 
+.table-box-view {
+  position: relative; /* Set position to relative */
+  z-index: 1; /* Lower value than the navbar */
+  top: 10px; /* Adjust to match the height of the navbar */
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
