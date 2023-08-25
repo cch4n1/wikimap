@@ -13,7 +13,7 @@ const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
 
 //view map
-router.get("/1", (req, res) => {
+router.get("/:userId", (req, res) => {
   const mapId = 3; //change this later
 
   Promise.all([
@@ -36,7 +36,10 @@ router.get("/1", (req, res) => {
 });
 
 //edit map
-router.get("/edit/1", (req, res) => {
+router.get("/edit/:mapId", (req, res) => {
+  const printOut = req.params.mapId;
+
+  console.log('THIS IS THE USERID =====>' + printOut);
   const mapId = 3;
 
   displayPointsQuery.getPoints(mapId).then((points = []) => {
