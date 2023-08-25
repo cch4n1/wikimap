@@ -11,7 +11,6 @@ const userQueries = require("../db/queries/getUsernameById");
 const mapQueries = require("../db/queries/getMapsByUserId"); // Add this line
 
 // http://localhost:8080/profile/3
-
 router.get("/:userId", (req, res) => {
   const userId = req.params.userId;
 
@@ -44,5 +43,20 @@ router.get("/:userId", (req, res) => {
       res.status(500).send("Server Error");
     });
 });
+
+
+
+// TODO: CHECK THIS LATER
+// router.get('/', (req, res) => {
+//   res.render('profile');
+// });
+
+// router.post('/', (req,res) => {
+//   let markerTitle = req.body.markerTitle;
+//   let markerDescription = req.body.markerDescription;
+//   let markerURL = req.body.markerURL;
+//   console.log(markerTitle, markerDescription, markerURL);
+//   res.render('profile');
+// })
 
 module.exports = router;

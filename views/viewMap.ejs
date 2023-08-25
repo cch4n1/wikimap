@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>My Profile</title>
+  <title><%= viewMap[0].title %> - View Map</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -15,15 +15,22 @@
   <link rel="stylesheet" href="/styles/navbar.css">
   <!-- leaflet css file -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <!-- Below script for points on map document -->
+  <script>
+    //Technically dont need to JSON.parse(''), but 
+    // including it so it doesnt show error on vscode from ejs perspective
+    const points = JSON.parse('<%- JSON.stringify(points) %>');
+    const viewMap = JSON.parse('<%- JSON.stringify(viewMap) %>');
+  </script>
+  <!--  Below script for rendering map -->
+  <script defer src="/scripts/view-map-w-points.js"></script>
   <!-- leaflet js file -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script>
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -32,26 +39,44 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
-<h3>viewing viewing</h3>
-       <!-- Map -->
-          <div class="map-box-profile" id="map"></div>
-          <script>
-            // Initialize the map
-            var map = L.map('map').setView([51.505, -0.09], 13);
+      <h3><%= viewMap[0].title %></h3>
+      <!-- Map -->
+      <!-- Map code -->
+      <div class="map-box-profile" id="map"></div>
+      <!-- End of Map code-->
 
-            // Add a tile layer (base map)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              maxZoom: 19,
-              attribution: '© OpenStreetMap'
-            }).addTo(map);
+      <main class="content" style="margin: 1em;">
+        <div class="table-box-view">
+          <h3>List of Map Points for <%= viewMap[0].title %></h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Point Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Image</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (let point of points) { %>
+                <tr>
+                  <td>
+                    <%= point['title'] %>
+                  </td>
+                  <td>
+                    <%= point['description'] %>
+                  </td>
+                  <td><a href="<%= point.image %>">Link</a></td>
+                </tr>
+                <% } %>
 
-            // Add a marker to the map
-            L.marker([51.5, -0.09]).addTo(map)
-              .bindPopup('A marker here!')
-              .openPopup();
-          </script>
-        <!-- End of Map code-->
-
+            </tbody>
+          </table>
+          <div class="card-footer text-muted">
+            <p class="card-text" style="text-align: center;">
+              <!-- <a href="#" style="display: inline-block;"><button class="btn btn-outline-primary">Create a new Map</button></a> -->
+            </p>
+          </div>
+        </div>
 </body>
 
 </html>

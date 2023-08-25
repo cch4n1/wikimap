@@ -9,6 +9,7 @@ INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Mountain Vie
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Downtown Spot', -33.8675, 151.2080);
 
 -- User 3's maps --
-INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (3, 'City View', 40.7128, -74.0060);
+INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (3, 'Day Trip in London', 51.505, -0.09);
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (3, 'Riverside Walk', 40.7110, -74.0070);
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (3, 'Museum Spot', 40.7135, -74.0055);
+
