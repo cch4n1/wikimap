@@ -40,6 +40,7 @@ const markerRoutes = require("./routes/marker");
 
 // Resource to view all maps in the homepage
 const homepageMapsAPIRoute = require("./routes/viewHomepageMaps-api");
+const getUsernameByIdAPIRoute = require("./routes/viewProfileUsernameById-api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -57,6 +58,10 @@ app.use("/marker", markerRoutes);
 
 // API end-point for data requests via Ajax
 app.use("/api/viewHomepageMaps", homepageMapsAPIRoute);
+
+
+app.use("/api/viewHomepageMaps/:userId", getUsernameByIdAPIRoute);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!

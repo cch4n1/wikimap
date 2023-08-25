@@ -1,4 +1,3 @@
--- point seed --
 
 -- Insert points for map 1
 INSERT INTO points (map_id, title, description, latitude, longitude, image) VALUES (1, 'Picnic Spot', 'A serene spot for picnics.', 34.0522, -118.2437, 'picnic.jpg');

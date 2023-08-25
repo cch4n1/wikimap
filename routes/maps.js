@@ -5,49 +5,49 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-const displayPointsQuery = require('../db/queries/get-points-for-map-view.js');
-const bodyParser = require('body-parser');
-const createMarkerQuery = require('../db/queries/createMarker');
+const express = require("express");
+const router = express.Router();
+const bodyParser = require("body-parser");
+const mapQueries = require("../db/queries/toggleFavorite");
+const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
+const createMarkerQuery = require("../db/queries/createMarker");
 
 //view map
-router.get('/1', (req, res) => {
+router.get("/1", (req, res) => {
   const mapId = 3; //change this later
 
   Promise.all([
     displayPointsQuery.getPoints(mapId),
-    displayPointsQuery.getMap(mapId)
+    displayPointsQuery.getMap(mapId),
   ])
     .then(([points = [], viewMap = []]) => {
       const templateVars = {
         points,
-        viewMap
-      }
+        viewMap,
+      };
       // console.log(vmap)
-      res.render('viewMap', templateVars);
+      res.render("viewMap", templateVars);
     })
-    .catch(err => {
+    .catch((err) => {
       // Handle any errors here
       console.error(err);
-      res.status(500).send('Error fetching data');
+      res.status(500).send("Error fetching data");
     });
 });
 
 //edit map
-router.get('/edit/1', (req, res) => {
+router.get("/edit/1", (req, res) => {
   const mapId = 3;
 
-  displayPointsQuery.getPoints(mapId)
-    .then((points = []) => {
-      const templateVars = {
-        points
-      }
-      // console.log(points)
-      res.render('editMap', templateVars);
-    })
+  displayPointsQuery.getPoints(mapId).then((points = []) => {
+    const templateVars = {
+      points,
+    };
+    // console.log(points)
+    res.render("editMap", templateVars);
+  });
   // res.render('editMap');
-})
+});
 
 // //edit map
 // router.post('/edit/1', (req, res) => {
@@ -76,8 +76,24 @@ router.get('/edit/1', (req, res) => {
 // })
 
 //delete map
-router.post('/1/delete', (req, res) => {
-  res.redirect('profile');
+router.post("/1/delete", (req, res) => {
+  res.redirect("profile");
+});
+
+router.post("/favourite/:mapId", (req, res) => {
+  console.log(true);
+  const mapId = req.params.mapId;
+  const shouldBeFavorited = req.body.favourited === "true";
+
+  mapQueries
+    .toggleFavorite(mapId, shouldBeFavorited)
+    .then(() => {
+      res.json({ success: true });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.json({ success: false });
+    });
 });
 
 module.exports = router;
