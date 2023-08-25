@@ -22,13 +22,10 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-
   // populateMarker function
   function populateMarker(pointsObject) {
-
     for (let point of points) {
-      console.log(point);
-      marker = L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
+      marker = L.marker([point.latitude, point.longitude], { draggable: false }).addTo(map)
       .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
     }
   }
@@ -48,7 +45,7 @@ $(() => {
 
   function addMarker(e) {
     let marker = new L.marker(e.latlng, { draggable: true }).addTo(map).bindPopup(buttonRemove);
-
+    console.log(marker);
     // //prepare data for POST request
     // const data = {
     //   lat: e.latlng.lat,
@@ -107,7 +104,7 @@ $(() => {
   function dragedMarker() {
     const markerPlace = document.querySelector('.marker-position');
     markerPlace.textContent = `change position: ${this.getLatLng().lat}, ${this.getLatLng().lng}`;
-
+    console.log('hello nurse')
     latInput.value = this.getLatLng().lat;
     longInput.value = this.getLatLng().lng;
   }
