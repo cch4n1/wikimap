@@ -4,7 +4,7 @@
     <% if (user) { %> <!-- Checks if user object exists, indicating a logged-in user -->
       <li><a href="/profile/<%= user.id %>">My Maps</a></li>
       <li><a href="/faves/<%= user.id %>">Favourites</a></li>
-      <li><a href="/create">Create</a></li>
+      <li><a href="/create/<%= user.id %>">Create</a></li>
     <% } %>
   </ul>
   <% if (user) { %>

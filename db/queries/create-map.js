@@ -4,9 +4,9 @@ const createMap = (params) => {
   return db.query(`
   INSERT INTO maps (user_id, title, latitude, longtitude)
   VALUES
-  (3, $1, 34.0522, -118.2437)
+  ($1, $2, 34.0522, -118.2437)
   RETURNING *
-  `, [params])
+  `, [params.id, params.title])
     .then(data => {
       return data.rows;
     });
