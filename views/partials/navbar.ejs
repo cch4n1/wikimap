@@ -1,7 +1,11 @@
 <nav class="navbar">
   <ul class="nav-list">
-    <li><a href="/">Home</a></li>
+    <% if (!user) { %> 
+      <li><a href="/">Home</a></li>
+    <% } %>
+
     <% if (user) { %> <!-- Checks if user object exists, indicating a logged-in user -->
+      <li><a href="/home/<%= user.id %>">Home</a></li>
       <li><a href="/profile/<%= user.id %>">My Maps</a></li>
       <li><a href="/faves/<%= user.id %>">Favourites</a></li>
       <li><a href="/create/<%= user.id %>">Create</a></li>
@@ -10,7 +14,9 @@
   <% if (user) { %>
     <div class="navbar-right">
       <span>Logged in as: <strong><%= user.username %></strong></span>
-      <a href="/home">Logout</a>
+      <form method="GET" action="/">
+        <button type="submit">Logout</button>
+      </form>
     </div>
   <% } %>
   <% if (!user) { %>
