@@ -13,4 +13,21 @@
       <a href="/home">Logout</a>
     </div>
   <% } %>
+  <% if (!user) { %>
+    <div class="navbar-right">
+      <span>Logged in as: <strong>Guest</strong></span>
+      Login as: 
+      <form method="GET" action="/home/1">
+        <button type="submit">Alice</button>
+      </form>
+      
+      <form method="GET" action="/home/2">
+        <button type="submit">Kira</button>
+      </form>
+      
+      <form method="GET" action="/home/3">
+        <button type="submit">Third User</button>
+      </form>
+    </div>
+  <% } %>
 </nav>
