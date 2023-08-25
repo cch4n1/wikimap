@@ -27,6 +27,7 @@ router.get("/", (req, res) => {
     });
 });
 
+
 // For logged in users --> http://localhost:8080/home/1
 router.get("/:id", (req, res) => {
   const userId = req.params.id;
