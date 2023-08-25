@@ -8,13 +8,14 @@
 const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
+const userQueries = require("../db/queries/getUsernameById");
 const mapQueries = require("../db/queries/toggleFavorite");
 const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
 
-//view map
-router.get("/1", (req, res) => {
-  const mapId = 3; //change this later
+// //view map for logged out
+router.get("/:mapId", (req, res) => {
+  const mapId = req.params.mapId; 
 
   Promise.all([
     displayPointsQuery.getPoints(mapId),
@@ -22,6 +23,33 @@ router.get("/1", (req, res) => {
   ])
     .then(([points = [], viewMap = []]) => {
       const templateVars = {
+        user: null,
+        points,
+        viewMap,
+      };
+      // console.log(vmap)
+      res.render("viewMap", templateVars);
+    })
+    .catch((err) => {
+      // Handle any errors here
+      console.error(err);
+      res.status(500).send("Error fetching data");
+    });
+});
+
+//view map for logged in user
+router.get("/:mapId/:userId", (req, res) => {
+  const mapId = req.params.mapId;
+  const userId = req.params.userId;
+
+  Promise.all([
+    userQueries.getUsernameById(userId),
+    displayPointsQuery.getPoints(mapId),
+    displayPointsQuery.getMap(mapId),
+  ])
+    .then(([username, points = [], viewMap = []]) => {
+      const templateVars = {
+        user: { id: userId, username: username },
         points,
         viewMap,
       };
