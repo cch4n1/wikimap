@@ -22,10 +22,14 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // console.log(req.body.mapTitle);
   console.log(req.body);
-  console.log(req.query);
-  console.log(req.params);
+  console.log('yoooo--->' + req.body.markerLat);
+  console.log('yoooo--->' + req.body.markerLong);
   console.log('testing reqs');
-  const mapParams = req.body.mapTitle;
+  const mapParams = {
+    title: req.body.mapTitle,
+    lat: req.body.markerLat,
+    long: req.body.markerLong
+  };
   createMapQuery.createMap(mapParams)
     .then(map => {
       console.log(map);

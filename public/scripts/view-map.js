@@ -9,24 +9,39 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-  let lat;
-  let lng;
+  // comment out the 2 lets below, useless
+  let mapCentreLat;
+  let mapCentreLong;
+
+  const latInput = document.querySelector('#markerLat');
+
+  const longInput = document.querySelector('#markerLong');
 
   console.log('ran the view-map script');
 
   map.on('dragend', function(e) {
     console.log('==========> did drag end? YES')
     let newMapCentre = map.getCenter();
-    lat = newMapCentre.lat;
-    lng= newMapCentre.lng;
 
-    console.log(`lat is: ${lat} '------' long is: ${lng}`);
+    latInput.value = newMapCentre.lat;
+    longInput.value = newMapCentre.lng;
+    //console.log(`this  is the centre at --- lat is: ${lat} '------' long is: ${lng}`);
   })
 
+  // map onlick is useless, please remove
+  // map.on('click', function(e) {
 
-  map.on('click', function(e) {
-    console.log(lat + '---' + lng);
-    console.log('==========> did lat lng print?')
-  });
+  //   let marker = new L.marker(e.latlng, { draggable: true });
+
+  //   latInput.value = mapCentreLat;
+  //   longInput.value = mapCentreLong;
+
+  //   const markerPlace = document.querySelector('.marker-position');
+  //   markerPlace.textContent = `Yes sir create position: ${marker.getLatLng().lat}, ${marker.getLatLng().lng
+  //     }`;
+
+  //   //console.log('the current clicked point is' + lat + '---' + lng);
+  //   console.log('==========> did lat lng print?')
+  // });
 })
 

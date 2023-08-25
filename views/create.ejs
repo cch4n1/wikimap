@@ -69,10 +69,16 @@
         <form class="form-inline" action="/create" method="POST">
           <label>Enter title:</label>
           <input class="form-control" type="mapTitle" name="mapTitle" placeholder="my map">
+          <label>LAT</label>
+          <input class="form-control" type="markerLat" name="markerLat" id="markerLat">
+          <label>LONG</label>
+          <input class="form-control" type="markerLong" name="markerLong" id="markerLong">
           <button type="submit" class="btn" id="create-map">Save</button>
         </form>
       </div>
     </main>
+
+    <div class="marker-position">this shows the coordinates</div>
 </body>
 
 </html>
