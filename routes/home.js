@@ -38,15 +38,11 @@ router.get("/:id", (req, res) => {
     userQueries.getUsernameById(userId), // get username using :id from browser
   ])
     .then(([maps, username]) => {
-      console.log("Maps Data:", maps);
-      console.log("User Data:", username);
-
       if (username) {
         const templateVars = {
           maps: maps,
           user: { id: userId, username: username }, // Using the directly returned username
         };
-        console.log("Template Variables:", templateVars);
         res.render("index", templateVars); // pass the username to home view using template vars
       } else {
         res.status(404).send("User not found");
