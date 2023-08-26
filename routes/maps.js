@@ -13,6 +13,7 @@ const mapQueries = require("../db/queries/getMapsByUserId");
 const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
 const userIdFromMapQuery = require("../db/queries/getUserByMapId");
+const deleteMapQuery = require("../db/queries/deleteMap");
 
 
 // //view map for logged out
@@ -121,8 +122,19 @@ router.get("/:mapId/:userId", (req, res) => {
 // })
 
 //delete map
-router.post("/1/delete", (req, res) => {
-  res.redirect("profile");
+router.post("/delete/:mapId", (req, res) => {
+  const mapId = req.params.mapId;
+
+  Promise.all([
+    userIdFromMapQuery.getUserByMapId(mapId),
+    deleteMapQuery.deleteMap(mapId)
+  ])
+  .then(user => {
+    console.log(user[0].user_id + '```````````````````````0202020202')
+    res.redirect(`/profile/${user[0].user_id}`);
+  })
+
+  // res.redirect("profile");
 });
 
 router.post("/favourite/:mapId", (req, res) => {
