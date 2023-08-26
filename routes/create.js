@@ -51,9 +51,6 @@ router.post('/:userId', (req, res) => {
   createMapQuery.createMap(mapParams)
     .then(maps => {
       const createdMap = maps[0];
-      console.log('Created Map:', createdMap);
-      console.log('User ID:', createdMap.user_id);
-      console.log('---------->>> this is a test of the route');
       res.redirect(`/profile/${createdMap.user_id}`);
     })
     .catch(err => {

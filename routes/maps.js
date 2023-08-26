@@ -30,7 +30,6 @@ router.get("/:mapId", (req, res) => {
         points,
         viewMap,
       };
-      // console.log(vmap)
       res.render("viewMap", templateVars);
     })
     .catch((err) => {
@@ -46,8 +45,6 @@ router.get("/edit/:mapId/:userId", (req, res) => {
   const mapId = req.params.mapId;
   const userId = req.params.userId;
 
-  console.log("this is map id===========>" + mapId);
-
   Promise.all([
     userQueries.getUsernameById(userId),
     displayPointsQuery.getPoints(mapId),
@@ -60,11 +57,8 @@ router.get("/edit/:mapId/:userId", (req, res) => {
       points,
       viewMap,
     };
-    console.log("this is templateVar. map===========>" + templateVars.viewMap);
-    // console.log(points)
     res.render("editMap", templateVars);
   });
-  // res.render('editMap');
 });
 
 //view map for logged in user
@@ -83,7 +77,6 @@ router.get("/:mapId/:userId", (req, res) => {
         points,
         viewMap,
       };
-      // console.log(vmap)
       res.render("viewMap", templateVars);
     })
     .catch((err) => {
@@ -92,34 +85,6 @@ router.get("/:mapId/:userId", (req, res) => {
       res.status(500).send("Error fetching data");
     });
 });
-
-
-
-// //edit map
-// router.post('/edit/1', (req, res) => {
-//   let lat = req.body.lat;
-//   let long = req.body.lng;
-
-//   console.log(req.body);
-
-//   const markerParams = {
-//     title: req.body.markerTitle,
-//     description: req.body.markerDescription,
-//     URL: req.body.markerURL,
-//     lat: req.body.markerLat,
-//     long: req.body.markerLong
-//   }
-//   createMarkerQuery.createMarker(markerParams)
-//     .then(marker => {
-//       console.log(marker);
-//       res.redirect('/profile');
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// })
 
 //delete map
 router.post("/delete/:mapId", (req, res) => {
@@ -130,7 +95,6 @@ router.post("/delete/:mapId", (req, res) => {
     deleteMapQuery.deleteMap(mapId)
   ])
   .then(user => {
-    console.log(user[0].user_id + '```````````````````````0202020202')
     res.redirect(`/profile/${user[0].user_id}`);
   })
 
