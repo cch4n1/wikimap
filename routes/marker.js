@@ -7,6 +7,7 @@ const router  = express.Router();
 const bodyParser = require('body-parser');
 const createMarkerQuery = require('../db/queries/createMarker');
 const deleteMarkerQuery = require('../db/queries/deleteMarker');
+// const getUserMapQuery = require('../db/queries/getUserandMap');
 
 router.get('/', (req, res) => {
   // console.log(req.query);
@@ -17,6 +18,22 @@ router.get('/', (req, res) => {
   // res.redirect('/profile');
   res.send("🤗");
 });
+
+// marker/delete/anything you want
+router.post("/delete/:point", (req, res) => {
+  let markerParams = req.params.point;
+
+  console.log('heelllo nurse')
+
+  Promise.all([
+    deleteMarkerQuery.getUserandMap(markerParams),
+    deleteMarkerQuery.deleteMarker(markerParams)
+  ])
+  .then(userAndMap => {
+    res.redirect(`/maps/${userAndMap[0].user_id}/${userAndMap[0].map_id}`);
+  });
+})
+
 // do a post to /marker/anything you want
 router.post('/:userId/:mapId', (req, res) => {
   const userId = req.params.userId;
@@ -47,17 +64,6 @@ router.post('/:userId/:mapId', (req, res) => {
         .json({ error: err.message });
     });
 });
-// marker/delete/anything you want
-router.post("/delete/:point", (req, res) => {
-  let markerParams = req.params.point;
 
-  console.log('heelllo nurse')
-
-  deleteMarkerQuery.deleteMarker(markerParams)
-  .then(marker => {
-    console.log('deleted');
-    res.redirect('/maps/edit/1');
-  });
-})
 
 module.exports = router;
