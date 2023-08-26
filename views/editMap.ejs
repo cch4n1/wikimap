@@ -72,7 +72,7 @@
               <th scope="col">Point Name</th>
               <th scope="col">Description</th>
               <th scope="col">Image</th>
-              <th scope="col">Edit</th>
+              <!-- <th scope="col">Edit</th> -->
               <th scopt="col">Delete</th>
             </tr>
           </thead>
@@ -86,7 +86,7 @@
                   <%= point['description'] %>
                 </td>
                 <td><a href="<%= point.image %>">Link</a></td>
-                <td><button class="open-button" onclick="openForm()">Edit</button></td>
+                <!-- <td><button class="open-button" onclick="openForm()">Edit</button></td> -->
                 <td><form method="POST" action="/marker/delete/<%= point.id%>"><button type="submit">Delete</button></form></td>
               </tr>
               <% } %>
