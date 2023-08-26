@@ -85,7 +85,7 @@
                 <td>
                   <%= point['description'] %>
                 </td>
-                <td><img src="<%= point.image %>" alt="img" class="array"/></td>
+                <td><a href="<%= point.image %>">Link</a></td>
                 <!-- <td><button class="open-button" onclick="openForm()">Edit</button></td> -->
                 <td><form method="POST" action="/marker/delete/<%= point.id%>"><button type="submit">Delete</button></form></td>
               </tr>
