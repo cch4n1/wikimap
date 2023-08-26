@@ -49,20 +49,17 @@
           <thead>
             <tr>
               <th scope="col">Map Name</th>
-              <th scope="col">Description</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
+              <th scope="col">Favourite</th>
             </tr>
           </thead>
           <tbody>
             <% userMaps.forEach(map=> { %>
               <tr>
-                <td><a href="/maps/<%= map.id %>">
+                <td><a href="/maps/<%= map.id %>/<%= user.id %>">
                     <%= map.title %>
                   </a></td>
-                <td>
-                  <%= map.description %>
-                </td>
                 <td><a href="/maps/edit/<%= map.id %>/<%= user.id %>"><button class="btn btn-outline-primary">Edit</button></a></td>
 
                 <!-- Delete Button -->
@@ -74,8 +71,10 @@
 
                 <!-- Add to Favourites Heart Icon -->
                 <td>
+                  <center>
                   <i class="fas fa-heart favorite-icon" data-map-id="<%= map.id %>"
                     style="cursor: pointer; color: <%= map.favourite ? 'red' : 'black' %>;"></i>
+                  </center>
                 </td>
 
 
