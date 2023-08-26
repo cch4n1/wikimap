@@ -26,6 +26,9 @@ body {
 //   height: 300px;
 // }
 
+//-------- maps styling for different pages -----------//
+
+// home page
 .map-box-home {
   position: relative; /* Set position to relative */
   top: 0px; /* Adjust to match the height of the navbar */
@@ -35,6 +38,7 @@ body {
   margin-bottom: 100px;
 }
 
+//profile page
 .map-box-profile {
   position: relative; /* Set position to relative */
   top: 0px; /* Adjust to match the height of the navbar */
@@ -43,6 +47,19 @@ body {
   height: 400px;
   margin-bottom: 20px;
 }
+
+//edit map page
+.map-box-edit {
+  position: relative; /* Set position to relative */
+  top: 0px; /* Adjust to match the height of the navbar */
+  z-index: 1; /* Lower value than the navbar */
+  width: 850px;
+  height: 400px;
+  margin-bottom: 20px;
+  margin-top:0px;
+}
+
+//-------- end of maps styling -----------//
 
 .profile-box {
   position: relative; /* Set position to relative */
@@ -100,6 +117,15 @@ body {
   margin-top: 20px;
 }
 
+.table a {
+  color:  rgb(84, 87, 143);
+  text-decoration: none;
+}
+
+.table a:hover {
+  color: rgb(116, 119, 153); /* Set the alternative color on hover */
+}
+
 .table th,
 .table td {
   padding: 10px;
@@ -128,3 +154,67 @@ body {
 // .table td button:hover {
 //   background-color: #c82333;
 // }
+
+// ------ edit map page starts here ---------- //
+
+.edit-form-box label{
+  font-weight: semi-bold;
+}
+
+.form-box-1 {
+  width: 100%;
+  margin-bottom: 20px;
+  
+}
+
+.form-box-2 {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-control-location {
+  width: 37%;
+  margin-right: 10px;
+}
+
+.form-control-url {
+  width: 40%;
+}
+
+.form-control-description {
+  width: 88.7%;
+}
+
+.form-control-lat {
+  margin-right: 10px;
+}
+
+.form-control-long {
+  margin-right: 10px;
+}
+
+.table-box-edit {
+  position: relative; /* Set position to relative */
+  z-index: 1; /* Lower value than the navbar */
+  top: 0px; /* Adjust to match the height of the navbar */
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+//-------- start of edit map page ---------//
+
+.create-map-form-box {
+  margin-bottom: 200px;
+}
+
+.form-control-title {
+  width: 55%;
+}
+
+.create-inner-form {
+  margin-top: 15px;
+}
+
+.create-form-lat {
+  margin-right: 15px;
+}
