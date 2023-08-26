@@ -14,7 +14,7 @@ const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
 const userIdFromMapQuery = require("../db/queries/getUserByMapId");
 const deleteMapQuery = require("../db/queries/deleteMap");
-
+const toggleFavorite = require("../db/queries/toggleFavorite")
 
 // //view map for logged out
 router.get("/:mapId", (req, res) => {
@@ -142,7 +142,7 @@ router.post("/favourite/:mapId", (req, res) => {
   const mapId = req.params.mapId;
   const shouldBeFavorited = req.body.favourited === "true";
 
-  mapQueries
+  toggleFavorite
     .toggleFavorite(mapId, shouldBeFavorited)
     .then(() => {
       res.json({ success: true });
