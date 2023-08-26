@@ -4,7 +4,7 @@ INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (1, 'Hidden Trail
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (1, 'Local Cafe', 34.0530, -118.2450);
 
 -- User 2's maps --
-INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Secret Beach', -33.8688, 151.2093);
+INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Secret Beach', 21.308016, -157.707296); 
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Mountain View', -33.8690, 151.2100);
 INSERT INTO maps (user_id, title, latitude, longtitude) VALUES (2, 'Downtown Spot', -33.8675, 151.2080);
 
