@@ -34,10 +34,27 @@
   color: lightgray;
 }
 
+.nav-menu {
+  display: flex;
+  margin-left: 10px;
+}
+
 
 // Align the logout button etc to the right
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 1rem;  /* space between the elements inside */
+}
+
+.logo {
+  font-family: 'lobster';
+  font-size: 27px;
+  color:#FFFFFF;
+}
+
+.fa-solid {
+  display: flex;
+  align-items: flex-start;
+  font-size: 20px;
 }
