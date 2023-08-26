@@ -30,7 +30,7 @@ router.post("/delete/:point", (req, res) => {
     deleteMarkerQuery.deleteMarker(markerParams)
   ])
   .then(userAndMap => {
-    res.redirect(`/maps/edit/${userAndMap[0].user_id}/${userAndMap[0].map_id}`);
+    res.redirect(`/maps/edit/${userAndMap[0].map_id}/${userAndMap[0].user_id}`);
   });
 })
 
