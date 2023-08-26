@@ -23,6 +23,11 @@ router.post("/delete/:point", (req, res) => {
   ])
   .then(userAndMap => {
     res.redirect(`/maps/edit/${userAndMap[0].map_id}/${userAndMap[0].user_id}`);
+  })
+  .catch((err) => {
+    // Handle any errors here
+    console.error(err);
+    res.status(500).send("Error fetching data");
   });
 })
 
