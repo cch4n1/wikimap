@@ -9,10 +9,11 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const userQueries = require("../db/queries/getUsernameById");
-const mapQueries = require("../db/queries/toggleFavorite");
+const mapQueries = require("../db/queries/getMapsByUserId");
 const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
 const userIdFromMapQuery = require("../db/queries/getUserByMapId");
+
 
 // //view map for logged out
 router.get("/:mapId", (req, res) => {
@@ -43,12 +44,14 @@ router.get("/:mapId", (req, res) => {
 router.get("/edit/:mapId/:userId", (req, res) => {
   const mapId = req.params.mapId;
   const userId = req.params.userId;
-  console.log('this is mapId of edit page==========>' + mapId);
+
+  console.log("this is map id===========>" + mapId);
 
   Promise.all([
     userQueries.getUsernameById(userId),
     displayPointsQuery.getPoints(mapId),
     displayPointsQuery.getMap(mapId),
+    // singleMapQuery.getMapbyMapId(mapId),
   ])
   .then(([username, points = [], viewMap = []]) => {
     const templateVars = {
@@ -56,6 +59,7 @@ router.get("/edit/:mapId/:userId", (req, res) => {
       points,
       viewMap,
     };
+    console.log("this is templateVar. map===========>" + templateVars.viewMap);
     // console.log(points)
     res.render("editMap", templateVars);
   });
