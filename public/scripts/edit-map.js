@@ -28,7 +28,7 @@ $(() => {
 
     for (let point of points) {
       marker = L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
-      .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
+      .bindPopup(`<strong>${point.title}</strong><br>${point.description}<br><br>`)
     }
   }
   populateMarker(points);

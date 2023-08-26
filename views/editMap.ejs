@@ -40,30 +40,36 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
-      <h3>Editing --- <%= viewMap[0].title %></h3>
+      <h3>Edit Map: <%= viewMap[0].title %></h3>
 
       <!-- Map -->
-      <div class="map-box-profile" id="map"></div>
+      <div class="map-box-edit" id="map"></div>
       <!-- End of Map code-->
       <!-- Input Form -->
 
-      <div>
+      <div class="edit-form-box">
         <form class="form-inline" action="/marker/<%= user.id%>/<%= viewMap[0].id%>" method="POST">
-          <label>Enter title:</label>
-          <input class="form-control" type="markerTitle" name="markerTitle" placeholder="title">
-          <label>Enter description</label>
-          <input class="form-control" type="markerDescription" name="markerDescription" placeholder="description">
-          <label>Enter URL</label>
-          <input class="form-control" type="markerURL" name="markerURL" placeholder="URL.jpg">
-          <label>LAT</label>
-          <input class="form-control" type="markerLat" name="markerLat" id="markerLat">
-          <label>LONG</label>
-          <input class="form-control" type="markerLong" name="markerLong" id="markerLong">
+          <div class="form-box-1">
+            <label>Name of Location:</label>
+            <input class="form-control-location" type="markerTitle" name="markerTitle" placeholder="title">
+            <label>URL:</label>
+            <input class="form-control-url" type="markerURL" name="markerURL" placeholder="url.jpg">
+          </div>
+          <div class="form-box-2">
+            <label>Description:</label>
+            <input class="form-control-description" type="markerDescription" name="markerDescription" placeholder="description">
+          </div>
+          <div class="form-box-3">
+          <label>Latitude:</label>
+          <input class="form-control-lat" type="markerLat" name="markerLat" id="markerLat">
+          <label>Longitude:</label>
+          <input class="form-control-long" type="markerLong" name="markerLong" id="markerLong">
           <button type="submit" class="btn" id="create-marker">Save</button>
+          </div>
         </form>
       </div>
 
-      <div class="table-box-home">
+      <div class="table-box-edit">
         <h3>Map Name</h3>
         <table class="table">
           <thead>

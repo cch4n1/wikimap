@@ -38,15 +38,17 @@
 
       <!-- Input Form -->
 
-      <div>
+      <div class="create-map-form-box">
         <form class="form-inline" action="/create/<%= user.id %>" method="POST">
-          <label>Enter title:</label>
-          <input class="form-control" type="mapTitle" name="mapTitle" placeholder="my map">
-          <label>LAT</label>
-          <input class="form-control" type="markerLat" name="markerLat" id="markerLat">
-          <label>LONG</label>
-          <input class="form-control" type="markerLong" name="markerLong" id="markerLong">
-          <button type="submit" class="btn" id="create-map">Save</button>
+          <label>Name of Map:</label>
+          <input class="form-control-title" type="mapTitle" name="mapTitle" placeholder="my map">
+          <div class="create-inner-form">
+            <label>Latitude:</label>
+            <input class="create-form-lat" type="markerLat" name="markerLat" id="markerLat">
+            <label>Longitude:</label>
+            <input class="create-form-long" type="markerLong" name="markerLong" id="markerLong">
+            <button type="submit" class="btn" id="create-map">Create</button>
+          </div>
         </form>
       </div>
     </main>
