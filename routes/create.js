@@ -50,7 +50,9 @@ router.post('/:userId', (req, res) => {
 
   const mapParams = {
     id: userId,
-    title: req.body.mapTitle
+    title: req.body.mapTitle,
+    lat: req.body.markerLat,
+    long: req.body.markerLong
   };
 
   createMapQuery.createMap(mapParams)
