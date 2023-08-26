@@ -17,7 +17,6 @@ const getUserandMap = (params) => {
   INNER JOIN users ON maps.user_id = users.id
   WHERE points.id = $1;`, [params])
     .then(data => {
-      console.log(data.rows);
       return data.rows[0]; // Here, we're returning only the username.
     });
 };
