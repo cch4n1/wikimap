@@ -18,8 +18,9 @@ router.get('/', (req, res) => {
   res.send("🤗");
 });
 // do a post to /marker/anything you want
-router.post('/:userId', (req, res) => {
+router.post('/:userId/:mapId', (req, res) => {
   const userId = req.params.userId;
+  const mapId = req.params.mapId;
   console.log('marker user id ===============>' +userId);
   let lat = req.body.lat;
   let long = req.body.lng;
@@ -27,6 +28,7 @@ router.post('/:userId', (req, res) => {
   console.log(req.body);
 
   const markerParams = {
+    mapId,
     title: req.body.markerTitle,
     description: req.body.markerDescription,
     URL: req.body.markerURL,
