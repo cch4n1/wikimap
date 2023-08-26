@@ -21,10 +21,12 @@
       //Technically dont need to JSON.parse(''), but
       // including it so it doesnt show error on vscode from ejs perspective
       const points = JSON.parse('<%- JSON.stringify(points) %>');
+      const viewMap = JSON.parse('<%- JSON.stringify(viewMap) %>');
     </script>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+
 
   <!-- leaflet js file -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
