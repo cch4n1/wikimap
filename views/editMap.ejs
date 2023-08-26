@@ -47,7 +47,7 @@
       <!-- Input Form -->
 
       <div>
-        <form class="form-inline" action="/marker" method="POST">
+        <form class="form-inline" action="/marker/<%= user.id%>" method="POST">
           <label>Enter title:</label>
           <input class="form-control" type="markerTitle" name="markerTitle" placeholder="title">
           <label>Enter description</label>
@@ -85,7 +85,7 @@
                 </td>
                 <td><a href="<%= point.image %>">Link</a></td>
                 <td><button class="open-button" onclick="openForm()">Edit</button></td>
-                <td><form method="POST" action="/marker/<%= point.id%>/delete"><button type="submit">Delete</button></form></td>
+                <td><form method="POST" action="/marker/delete/<%= point.id%>"><button type="submit">Delete</button></form></td>
               </tr>
               <% } %>
 
@@ -93,7 +93,7 @@
         </table>
         <div class="card-footer text-muted">
 
-          <!-- Popup edit form -->
+          <!-- Popup edit form
           <div class="form-popup" id="myForm">
             <form action="/action_page.php" class="form-container">
               <h1>Login</h1>
@@ -107,7 +107,7 @@
               <button type="submit" class="btn">Login</button>
               <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
-          </div>
+          </div> -->
 
 
 <!--
