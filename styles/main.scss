@@ -4,7 +4,6 @@ body {
   // justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-
   background: #ffffff;
   // background: rgb(163, 208, 219);
   // background: linear-gradient(
@@ -16,6 +15,29 @@ body {
   //   rgba(163, 208, 219, 1) 74%,
   //   rgba(163, 208, 219, 1) 100%
   // );
+}
+
+/* Select all forms and apply styling */
+input {
+  background-color: rgb(232, 230, 245); /* Set the background color */
+  padding: 8px; /* Add padding to the forms */
+  border-radius: 10px; /* Add rounded edges */
+  border: 0px;
+}
+
+form input:focus {
+  outline: none;
+}
+
+/* Select all buttons and apply styling */
+button {
+  color: #0B666A;
+  background-color: #bae2e4; /* Change the background color */
+  border: 2px solid #0B666A; /* Set the border width and color */
+  border-radius: 10px; /* Add rounded edges */
+  padding: 3px 8px; /* Add padding for better appearance */
+  // color: #ffffff; /* Set text color */
+  cursor: pointer; /* Change cursor style on hover */
 }
 
 // #map {
