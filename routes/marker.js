@@ -17,8 +17,10 @@ router.get('/', (req, res) => {
   // res.redirect('/profile');
   res.send("🤗");
 });
-
-router.post('/', (req, res) => {
+// do a post to /marker/anything you want
+router.post('/:userId', (req, res) => {
+  const userId = req.params.userId;
+  console.log('marker user id ===============>' +userId);
   let lat = req.body.lat;
   let long = req.body.lng;
 
@@ -33,8 +35,9 @@ router.post('/', (req, res) => {
   }
   createMarkerQuery.createMarker(markerParams)
     .then(marker => {
+
       console.log(marker);
-      res.redirect('maps/edit/1');
+      res.redirect(`/profile/${userId}`);
     })
     .catch(err => {
       res
@@ -42,9 +45,11 @@ router.post('/', (req, res) => {
         .json({ error: err.message });
     });
 });
-
-router.post("/:point/delete", (req, res) => {
+// marker/delete/anything you want
+router.post("/delete/:point", (req, res) => {
   let markerParams = req.params.point;
+
+  console.log('heelllo nurse')
 
   deleteMarkerQuery.deleteMarker(markerParams)
   .then(marker => {

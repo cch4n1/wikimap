@@ -12,10 +12,11 @@ const userQueries = require("../db/queries/getUsernameById");
 const mapQueries = require("../db/queries/toggleFavorite");
 const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
 const createMarkerQuery = require("../db/queries/createMarker");
+const userIdFromMapQuery = require("../db/queries/getUserByMapId");
 
 // //view map for logged out
 router.get("/:mapId", (req, res) => {
-  const mapId = req.params.mapId; 
+  const mapId = req.params.mapId;
 
   Promise.all([
     displayPointsQuery.getPoints(mapId),
@@ -35,6 +36,30 @@ router.get("/:mapId", (req, res) => {
       console.error(err);
       res.status(500).send("Error fetching data");
     });
+});
+
+
+//edit map ---- this edit map needs to be above get/mapId/user/id
+router.get("/edit/:mapId/:userId", (req, res) => {
+  const mapId = req.params.mapId;
+  const userId = req.params.userId;
+  console.log('this is mapId of edit page==========>' + mapId);
+
+  Promise.all([
+    userQueries.getUsernameById(userId),
+    displayPointsQuery.getPoints(mapId),
+    displayPointsQuery.getMap(mapId),
+  ])
+  .then(([username, points = [], viewMap = []]) => {
+    const templateVars = {
+      user: { id: userId, username: username },
+      points,
+      viewMap,
+    };
+    // console.log(points)
+    res.render("editMap", templateVars);
+  });
+  // res.render('editMap');
 });
 
 //view map for logged in user
@@ -63,19 +88,7 @@ router.get("/:mapId/:userId", (req, res) => {
     });
 });
 
-//edit map
-router.get("/edit/1", (req, res) => {
-  const mapId = 3;
 
-  displayPointsQuery.getPoints(mapId).then((points = []) => {
-    const templateVars = {
-      points,
-    };
-    // console.log(points)
-    res.render("editMap", templateVars);
-  });
-  // res.render('editMap');
-});
 
 // //edit map
 // router.post('/edit/1', (req, res) => {
