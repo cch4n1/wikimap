@@ -7,11 +7,11 @@
 
 const express = require("express");
 const router = express.Router();
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser"); did not use
 const userQueries = require("../db/queries/getUsernameById");
 const mapQueries = require("../db/queries/getMapsByUserId");
 const displayPointsQuery = require("../db/queries/get-points-for-map-view.js");
-const createMarkerQuery = require("../db/queries/createMarker");
+// const createMarkerQuery = require("../db/queries/createMarker"); did not use
 const userIdFromMapQuery = require("../db/queries/getUserByMapId");
 const deleteMapQuery = require("../db/queries/deleteMap");
 

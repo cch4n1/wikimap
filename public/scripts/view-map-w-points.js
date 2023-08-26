@@ -8,9 +8,6 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-  let lat;
-  let lng;
-
   let centre = map.getCenter();
 
   for (let point of points) {
@@ -18,18 +15,13 @@ $(() => {
       .bindPopup(`<strong>${point.title}</strong><br>${point.description}<br><br><center><img src="${point.image}" width="120" height="120"></center>`)
   }
 
-  // map.on('mousemove', function(e) {
-  //   // lat = centre.lat;
-  //   // lng = centre.lng;
-  //   console.log('==========> did mouse move?')
-  //   console.log([e.latlng.lat, e.latlng.lng]);
-  //   // console.log(map.getCenter());
-  // })
+  // debugging code below to see if map is clicked
+  // let lat;
+  // let lng;
 
-
-  map.on('click', function(e) {
-    console.log(lat + '---' + lng);
-    console.log('==========> did lat lng print?')
-  });
+  // map.on('click', function(e) {
+  //   console.log(lat + '---' + lng);
+  //   console.log('==========> did lat lng print?')
+  // });
 })
 

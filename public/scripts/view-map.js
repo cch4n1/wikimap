@@ -9,9 +9,6 @@ $(() => {
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-  let lat;
-  let lng;
-
   const latInput = document.querySelector('#markerLat');
 
   const longInput = document.querySelector('#markerLong');
@@ -23,9 +20,13 @@ $(() => {
   })
 
 
-  map.on('click', function(e) {
-    console.log(lat + '---' + lng);
-    console.log('==========> did lat lng print?')
-  });
+  // debugging code below to see if map is clicked
+  // let lat;
+  // let lng;
+
+  // map.on('click', function(e) {
+  //   console.log(lat + '---' + lng);
+  //   console.log('==========> did lat lng print?')
+  // });
 })
 
