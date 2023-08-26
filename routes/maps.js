@@ -58,6 +58,11 @@ router.get("/edit/:mapId/:userId", (req, res) => {
       viewMap,
     };
     res.render("editMap", templateVars);
+  })
+  .catch((err) => {
+    // Handle any errors here
+    console.error(err);
+    res.status(500).send("Error fetching data");
   });
 });
 
@@ -97,7 +102,11 @@ router.post("/delete/:mapId", (req, res) => {
   .then(user => {
     res.redirect(`/profile/${user[0].user_id}`);
   })
-
+  .catch((err) => {
+    // Handle any errors here
+    console.error(err);
+    res.status(500).send("Error fetching data");
+  });
   // res.redirect("profile");
 });
 
