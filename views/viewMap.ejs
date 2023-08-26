@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-  <title><%= viewMap[0].title %> - View Map</title>
+  <title>
+    <%= viewMap[0].title %> - View Map
+  </title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +23,7 @@
   <script defer src="/scripts/app.js"></script>
   <!-- Below script for points on map document -->
   <script>
-    //Technically dont need to JSON.parse(''), but 
+    //Technically dont need to JSON.parse(''), but
     // including it so it doesnt show error on vscode from ejs perspective
     const points = JSON.parse('<%- JSON.stringify(points) %>');
     const viewMap = JSON.parse('<%- JSON.stringify(viewMap) %>');
@@ -39,7 +41,9 @@
     <!-- <h1>Have fun! 🥔</h1> -->
 
     <main style="margin: 1em; margin-top: 23vh;">
-      <h3><%= viewMap[0].title %></h3>
+      <h3>
+        <%= viewMap[0].title %>
+      </h3>
       <!-- Map -->
       <!-- Map code -->
       <div class="map-box-profile" id="map"></div>
@@ -47,7 +51,8 @@
 
       <main class="content" style="margin: 1em;">
         <div class="table-box-view">
-          <h3>List of Map Points for <%= viewMap[0].title %></h3>
+          <h3>List of Map Points for <%= viewMap[0].title %>
+          </h3>
           <table class="table">
             <thead>
               <tr>
