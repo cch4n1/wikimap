@@ -16,15 +16,10 @@ $(() => {
 
   const longInput = document.querySelector('#markerLong');
 
-  console.log('ran the view-map script');
-
   map.on('dragend', function(e) {
-    console.log('==========> did drag end? YES')
     let newMapCentre = map.getCenter();
     latInput.value = newMapCentre.lat;
     longInput.value = newMapCentre.lng;
-
-    console.log(`lat is: ${lat} '------' long is: ${lng}`);
   })
 
 
