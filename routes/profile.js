@@ -19,13 +19,9 @@ router.get("/:userId", (req, res) => {
     mapQueries.getMapsByUserId(userId),
   ])
     .then((results) => {
-      console.log("All Promises Resolved:", results);
 
       const username = results[0];
       const maps = results[1];
-
-      console.log("Username:", username);
-      console.log("Maps:", maps);
 
       if (username) {
         // Render the profile view with the username, maps, and ID

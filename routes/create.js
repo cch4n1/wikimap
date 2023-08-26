@@ -13,19 +13,13 @@ const createMapQuery = require('../db/queries/create-map');
 
 router.get('/:userId', (req, res) => {
   const userId = req.params.userId;
-  console.log('username is' + userId);
-  // console.log(req.body);
   Promise.all([
     userQueries.getUsernameById(userId),
     mapQueries.getMapsByUserId(userId),
   ])
     .then((results) => {
-      // console.log("All Promises Resolved:", results);
-
       const username = results[0];
       const maps = results[1];
-      // console.log("Username:", username);
-      // console.log("Maps:", maps);
 
       if (username) {
         // Render the profile view with the username, maps, and ID
@@ -46,7 +40,6 @@ router.get('/:userId', (req, res) => {
 
 router.post('/:userId', (req, res) => {
   const userId = req.params.userId;
-  console.log(req.body);
 
   const mapParams = {
     id: userId,
@@ -58,9 +51,6 @@ router.post('/:userId', (req, res) => {
   createMapQuery.createMap(mapParams)
     .then(maps => {
       const createdMap = maps[0];
-      console.log('Created Map:', createdMap);
-      console.log('User ID:', createdMap.user_id);
-      console.log('---------->>> this is a test of the route');
       res.redirect(`/profile/${createdMap.user_id}`);
     })
     .catch(err => {

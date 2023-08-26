@@ -14,7 +14,6 @@ $(() => {
 
 
   //create the map
-  console.log(`${viewMap} =======================>`);
   let map = L.map('map').setView([viewMap[0].latitude, viewMap[0].longtitude], 12);
 
   // Add a tile layer (base map)
@@ -28,7 +27,6 @@ $(() => {
   function populateMarker(pointsObject) {
 
     for (let point of points) {
-      console.log(point);
       marker = L.marker([point.latitude, point.longitude], { draggable: true }).addTo(map)
       .bindPopup(`<strong>${point.title}</strong><br>${point.description}`)
     }
