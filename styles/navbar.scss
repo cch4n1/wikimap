@@ -16,11 +16,16 @@
 .navbar button {
   color: #0B666A;
   background-color: #ffffff; /* Change the background color */
-  border: 2px solid #ffffff; /* Set the border width and color */
+  // border: 2px solid #ffffff; /* Set the border width and color */
   border-radius: 10px; /* Add rounded edges */
   padding: 5px 10px; /* Add padding for better appearance */
   // color: #ffffff; /* Set text color */
   cursor: pointer; /* Change cursor style on hover */
+}
+
+.navbar button:hover {
+  // background-color: #e0e8e8;
+  // color: #ffffff;
 }
 
 .nav-list {
