@@ -1,4 +1,3 @@
-=======
 WikiMap 🌎
 =========
 
@@ -55,6 +54,9 @@ This project was built for our midterm project at Lighthouse Labs
 **Favourites**
 - Keep a collection of your favourite maps
 
+
+
+
 ## Getting Started
 
 1. Open project folder `cd wikimap`
@@ -62,6 +64,7 @@ This project was built for our midterm project at Lighthouse Labs
 4. Run the server: `npm run local`
   - Note: nodemon is used, so you should not have to restart your server
 5. Visit `http://localhost:8080/`
+
 
 ## Dependencies
 
