@@ -10,16 +10,23 @@ This project was built for our midterm project at Lighthouse Labs
 ## Final Product
 
 **Map Display Page**
+![](/pictures/map.png)
 
 **Home Page**
+![](/pictures/home.png)
 
 **Create a New Map**
+![](/pictures/create.png)
 
 **Edit an Existing Map**
+![](/pictures/edit-1.png)
+![](/pictures/edit-2.png)
 
 **My Maps**
+![](/pictures/my-maps.png)
 
 **Favourites**
+![](/pictures/favs.png)
 
 ## Features
 
