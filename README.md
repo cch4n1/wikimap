@@ -1,4 +1,4 @@
-WikiMap 🌎
+WikiMap 🗺️
 =========
 
 A webapp for users to maintain a collection of customized maps with saved location points and details for each map. 
